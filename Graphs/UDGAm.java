@@ -36,8 +36,8 @@ class UDGAm {
         }
     }
 
-    public void dfsIterative(int s) {
-        boolean[] visited = new boolean[n];
+    public List<Integer> dfsIterative(int s, boolean[] visited) {
+        List<Integer> res = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
         stack.push(s);
 
@@ -47,55 +47,63 @@ class UDGAm {
                 continue;
             }
             visited[u] = true;
-            System.out.print(u + " ");
+            res.add(u);
 
-            for (int i = n - 1; i >= 0; i--) {
+            for (int i = 0;i<n;i++) {
                 if (m[u][i] == 1 && !visited[i]) {
                     stack.push(i);
                 }
             }
         }
+        return res;
     }
 
     public void search(Scanner sc) {
-    while (true) {
-        System.out.print("Enter starting vertex for DFS (-1 to quit): ");
-        int s = sc.nextInt();
-        if (s == -1) {
-            break;
-        }
-        if (s < 0 || s >= n) {
-            System.out.println("Invalid start vertex");
-            continue;
-        }
-
-        boolean[] visited = new boolean[n];
-        System.out.println("DFS traversal starting from vertex " + s + ": ");
-
         while (true) {
-            System.out.println("1. With Recursion");
-            System.out.println("2. Without Recursion");
-            System.out.println("3. Exit DFS menu");
-            int ch = sc.nextInt();
+            System.out.print("Enter starting vertex for DFS (-1 to quit): ");
+            int s = sc.nextInt();
+            if (s == -1) {
+                break;
+            }
+            if (s < 0 || s >= n) {
+                System.out.println("Invalid start vertex");
+                continue;
+            }
 
-            switch (ch) {
-                case 1:
-                    dfs(s, visited);
-                    System.out.println();
-                    break;
-                case 2:
-                    dfsIterative(s);
-                    System.out.println();
-                    break;
-                case 3:
-                    System.out.println("Exiting DFS menu...");
-                    return;
-                default:
-                    System.out.println("Invalid choice, try again.");
+            while (true) {
+                System.out.println("1. With Recursion");
+                System.out.println("2. Without Recursion");
+                System.out.println("3. Exit DFS menu");
+                System.out.print("Choose option: ");
+                int ch = sc.nextInt();
+
+                switch (ch) {
+                    case 1: {
+                        boolean[] visited = new boolean[n];
+                        System.out.println("DFS traversal (recursion) starting from vertex " + s + ": ");
+                        dfs(s, visited);
+                        System.out.println();
+                        break;
+                    }
+                    case 2: {
+                        boolean[] visited = new boolean[n];
+                        List<Integer> res = dfsIterative(s, visited);
+                        System.out.println("DFS traversal (iterative) starting from vertex " + s + ": ");
+                        for (int v : res) {
+                            System.out.print(v + " ");
+                        }
+                        System.out.println();
+                        break;
+                    }
+                    case 3:
+                        System.out.println("Exiting DFS menu...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice, try again.");
+                }
             }
         }
     }
-}
 
 
     public static void main(String[] args) {
