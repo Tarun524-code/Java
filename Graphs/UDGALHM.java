@@ -1,7 +1,7 @@
 package Graphs;
 import java.util.*;
 class UDGALHM {
-    HashMap<Integer,List<Integer>> g;
+    Map<Integer,List<Integer>> g;
     int n;
     UDGALHM(int n){
         this.n = n;
