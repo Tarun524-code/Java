@@ -1,7 +1,7 @@
 package Graphs;
 import java.util.*;
 class UDGALHM {
-    Map<Integer,List<Integer>> g;
+    HashMap<Integer,List<Integer>> g;
     int n;
     UDGALHM(int n){
         this.n = n;
@@ -40,7 +40,8 @@ class UDGALHM {
 
             System.out.print("Enter -1 to quit or any other number to continue: ");
             int ch = sc.nextInt();
-            if (ch == -1) break;
+            if (ch == -1)
+                break;
         }
 
         g.display();
