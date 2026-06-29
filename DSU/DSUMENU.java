@@ -76,6 +76,7 @@ public class DSUMENU {
                 default:
                     System.out.println("Invalid choice.");
             }
+            sc.close();
         }
     }
 }
