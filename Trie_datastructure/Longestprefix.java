@@ -1,3 +1,4 @@
+package Trie_datastructure;
 import java.util.Scanner;
 
 class TrieNode {
