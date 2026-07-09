@@ -2,30 +2,30 @@ package PatternMatching;
 import java.util.*;
 class BoyerMooreGoodSuffix {
     private static int[] buildGoodSuffixTable(String pattern) {
-        int m = pattern.length();
-        int[] goodSuffix = new int[m];
-        int[] suffix = new int[m];
-        suffix[m - 1] = m;
-        for (int i = m - 2; i >= 0; i--) {
+        int n = pattern.length();
+        int[] goodSuffix = new int[n];
+        int[] suffix = new int[n];
+        suffix[n - 1] = n;
+        for (int i = n - 2; i >= 0; i--) {
             int j = i;
-            while (j >= 0 && pattern.charAt(j) == pattern.charAt(m - 1 - (i - j))) {
+            while (j >= 0 && pattern.charAt(j) == pattern.charAt(n - 1 - (i - j))) {
                 j--;
             }
             suffix[i] = i - j;
         }
-        Arrays.fill(goodSuffix, m);
+        Arrays.fill(goodSuffix, n);
         int j = 0;
-        for (int i = m - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             if (suffix[i] == i + 1) {
-                for (; j < m - 1 - i; j++) {
-                    if (goodSuffix[j] == m) {
-                        goodSuffix[j] = m - 1 - i;
+                for (; j < n - 1 - i; j++) {
+                    if (goodSuffix[j] == n) {
+                        goodSuffix[j] = n - 1 - i;
                     }
                 }
             }
         }
-        for (int i = 0; i <= m - 2; i++) {
-            goodSuffix[m - 1 - suffix[i]] = m - 1 - i;
+        for (int i = 0; i <= n - 2; i++) {
+            goodSuffix[n - 1 - suffix[i]] = n - 1 - i;
         }
         return goodSuffix;
     }
