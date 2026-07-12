@@ -56,9 +56,9 @@ class BoyerMooreGoodSuffix {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String t = sc.nextLine();
-        String p = sc.nextLine();
-        search(t, p);
+        String text = sc.nextLine();
+        String pattern = sc.nextLine();
+        search(text, pattern);
         sc.close();
     }
 }
