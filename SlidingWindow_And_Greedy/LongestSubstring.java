@@ -1,4 +1,4 @@
-package SlidingWindow;
+package SlidingWindow_And_Greedy;
 import java.util.*;
 
 public class LongestSubstring {

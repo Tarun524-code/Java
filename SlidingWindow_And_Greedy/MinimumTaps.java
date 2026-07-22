@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package SlidingWindow_And_Greedy;
 
 import java.util.*;
 class MinimumTaps {

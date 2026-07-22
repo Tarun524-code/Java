@@ -1,4 +1,4 @@
-package SlidingWindow;
+package DynamicProgramming;
 import java.util.Scanner;
 
 public class MinPathSum {
